@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 
 import './App.css';
 
-import VideoUploads from './components/videoUploads';
-import NewVideo from './components/NewVideo';
+import VideoUploads from './components/VideoUploads/videoUploads';
+import NewVideo from './components/NewVideo/NewVideo';
 
 function App() {
   const [videoUploads, setVideoUploads] = useState([
