@@ -1,22 +1,32 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
+
 import './App.css';
 
+import VideoUploads from './components/videoUploads';
+import NewVideo from './components/NewVideo';
+
 function App() {
+  const [videoUploads, setVideoUploads] = useState([
+    {id: 'vu1', text: 'Rapping On the Hill'},
+    {id: 'vu2', text: "Thanksgiving at the Harrington's"},
+    {id: 'vu3', text: "Skateboarding In Denver, Colorado USA 11/27/2021"},
+  ]);
+
+  const addNewVideoHandler = newVideo => {
+    //setVideoUploads(videoUploads.concat(newVideo));
+    setVideoUploads((prevVideoUploads) => prevVideoUploads.concat(newVideo));
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <div className="video-uploads">
+            <h2>Video Uploads</h2>
+            <NewVideo onAddVideo={addNewVideoHandler} />
+            <VideoUploads videos={videoUploads} />
+          </div>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
